@@ -16,7 +16,7 @@ code {
 
 /* ------------------------------------------------------------------------ */
 .main {
-  border: 1px solid magenta;
+  /* border: 1px solid magenta; */
   display: flex;
   height: 50vh;
   width: 100%;
@@ -27,13 +27,14 @@ code {
 
 .search {
   width: 100%;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
   .search input {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 50%;
   min-width: 400px;
   height: 3em;
@@ -49,4 +50,32 @@ code {
   place-items: center;
 }
 /* ------------------------------------------------------------------------ */
+/* trending Box */
+/* ------------------------------------------------------------------------ */
+
+.trending-container {
+  /* border: 1px solid magenta; */
+  width: 60%;
+  background-color: #ffffff;
+  position: absolute;
+  top: 15em;
+  padding-left: 3em;
+  padding-right: 3em;
+  padding-bottom: 4em;
+  border-radius: 4px;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
+}
+
+.bookContainer {
+  width: 100%;
+  /* border: 1px solid magenta; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  column-gap: 1.5em;
+}
+
+.bookContainer img {
+  width: 100%;
+}
 
