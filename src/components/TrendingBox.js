@@ -15,7 +15,7 @@ function TrendingBox() {
                 { data.map((book) => {
                     const { id, title, author, image } = book;
                         return (
-                            <div key={id}>
+                            <div className="book" key={id}>
                                 <img src={image} />
                                 <h4 style={{margin: "0.5em 0 0 0"}}>{title}</h4>
                                 <p style={{margin: "0.5em 0 0 0"}}>{author}</p>
