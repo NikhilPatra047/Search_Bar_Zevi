@@ -6,6 +6,7 @@ function TrendingBox() {
     const { data } = useFetch(dataURL);
     console.log(data);
     const { search, updatedProduct } = useGlobalContext();
+
     return (
         <div className="trending-container">
             { !search && <>

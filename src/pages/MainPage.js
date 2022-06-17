@@ -1,4 +1,3 @@
-import ProductList from "../components/ProductList";
 import SearchBar from "../components/SearchBar";
 import TrendingBox from "../components/TrendingBox";
 import { useGlobalContext } from "../context";
@@ -15,6 +14,7 @@ function MainPage() {
           {active ? <TrendingBox /> : ``}
         </div>
       </div>
+      
     </>
   );
 }
