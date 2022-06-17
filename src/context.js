@@ -1,26 +1,47 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { product } from "./data";
 
 const AppContext = React.createContext();
 
 export function AppProvider({ children }) {
     const [active, setActive] = useState(false);
-    const [check, setCheck] = useState(false);
+    const [updatedProduct, setUpdatedProduct] = useState([]); 
+    const [search, setSearch] = useState();
 
-    const toggleActive = () => {
-        setActive(!active);
+    const activeBox = () => {
+        setActive(true);
     };
 
-    const toggleCheck = (id, data) => {
-        data.filter((item) => {
-            if(item.id === id) {
-                setCheck(!check);
-            }
-        })
-        // setCheck(!check);
+    const inActiveBox = () => {
+        setActive(false);
+    }
+
+    const toggleCheck = (productID) => {
+        const specificItem = updatedProduct.find((item) => item.id === productID);
+
+        specificItem.checked = !specificItem.checked;
+        
+        setUpdatedProduct([...updatedProduct]);
     };
     
+    const handleFilter = (e) => {
+        const searchWord = e.target.value;
+        setSearch(searchWord);
+        const filteredData = product.filter((item) => {
+            return item.title.toLowerCase().startsWith(searchWord);
+        });
+
+        console.log(filteredData);
+
+        setUpdatedProduct(filteredData);
+    };
+
+    useEffect(() => {
+        setUpdatedProduct(product);
+    }, [product]);
+
     return (
-        <AppContext.Provider value = {{active, toggleActive, toggleCheck, check}}>
+        <AppContext.Provider value = {{active, activeBox, inActiveBox, toggleCheck, updatedProduct, handleFilter, search, setSearch}}>
             { children }
         </AppContext.Provider>
     );
