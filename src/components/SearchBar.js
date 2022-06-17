@@ -1,24 +1,17 @@
 import index from "../index.css";
-import React, { useState } from "react";
-import TrendingBox from "./TrendingBox";
+import React from "react";
+import { useGlobalContext } from "../context";
 
 function SearchBar() {
-    const [active, setActive] = useState(false);
-
-    const toggleActivate = () => {
-        setActive(!active);
-    }
+    const { toggleActive } = useGlobalContext();
 
     return (
-        <div className="main">
-            <div className="search">
-                <input type="text" 
-                placeholder="Search"
-                onFocus={toggleActivate}
-                onBlur={toggleActivate}
-                />                
-            </div>
-            { active ? <TrendingBox /> : ``}
+        <div className="search">
+            <input type="text" 
+            placeholder="Search"
+            onFocus={toggleActive}
+            onBlur={toggleActive}
+            />                
         </div>
     );
 };
