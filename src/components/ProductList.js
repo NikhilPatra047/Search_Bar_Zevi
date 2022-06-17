@@ -2,7 +2,6 @@ import { useGlobalContext } from "../context";
 
 function ProductList() {
     const { updatedProduct, toggleCheck } = useGlobalContext();
-
     return (
         <>
             <h2 className="searchResultsTitle">Search Results</h2>
@@ -149,9 +148,10 @@ function ProductList() {
                 <div className="productDisplay">
                     <div className="bookContainer bookDisplay">
                     { updatedProduct.map((book) => {
-                        const { id, title, author, image, checked } = book;
+                        const { id, title, author, image, checked, oldPrice, newPrice } = book;
                         return (
                             <div className="product" key={id}>
+                                
                                 <img src={image} />
 
                                 <svg className={ checked ? "checked" : "unchecked"} 
@@ -160,8 +160,8 @@ function ProductList() {
                                 <path d="M8.09375 1.01172C3.86581 1.01172 1.02734 4.43396 1.02734 8.66016C1.02734 13.4558 7.72721 19.1855 13.4688 23.0117C19.2103 19.1855 25.8327 13.3634 25.9102 8.66016C25.9798 4.43456 23.2436 1.01172 19.0156 1.01172C17.2119 1.01172 15.3826 1.96591 13.4688 3.87891C11.5549 1.96591 9.89749 1.01172 8.09375 1.01172Z" stroke="white"/>
                                 </svg>
 
-                                <p>{title}</p>
-
+                                <p style={{marginBottom: "0.3em", fontWeight: "bold"}}>{title}</p>
+                                <p style={{marginTop: "0"}}>{author}</p>
                                 <p style={{
                                     marginTop: "0",
                                     paddingTop: "0em",
@@ -178,15 +178,15 @@ function ProductList() {
                                     textDecorationLine: "line-through",
                                     color: "rgba(0, 0, 0, 0.4)"}}
                                 >
-                                    Rs.599
+                                    Rs.{oldPrice}
                                 </p>
 
-                                {/* <p style={{
+                                <p style={{
                                     marginTop: "0",
                                     display: "inline-block",
                                     width: "69px",
                                     height: "24px",
-                                    right: "94px",
+                                    right: "90px",
                                     top: "385px",
                                     fontFamily: 'Inter',
                                     fontStyle: "normal",
@@ -195,15 +195,14 @@ function ProductList() {
                                     lineHeight: "24px",
                                     color: "#6D84FF"}}
                                 >
-                                    Rs.599
-                                </p> */}
+                                    Rs.{newPrice}
+                                </p>
 
-                                {/* <div style={{display: "block"}}>
+                                {/* <div style={{display: "inline-block"}}>
                                     <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z" fill="#FDD33D"/>
                                     </svg>
-                                </div>
-                                 */}
+                                </div> */}
                             </div>
                         );
                     })}
